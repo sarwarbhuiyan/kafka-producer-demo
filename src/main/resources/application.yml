@@ -1,0 +1,10 @@
+kafka:
+  publisher:
+    properties:
+      greetings-topic: "greetings"
+      bootstrap.servers: "192.168.99.106:9092"
+      acks: "all"
+      enable.idempotence: "true"
+      batch.size: "8000000"
+      linger.ms: "5"
+      client.id: "my-producer-id"
