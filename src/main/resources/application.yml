@@ -1,4 +1,15 @@
 kafka:
+  streams:
+    greetings-streams:
+      input-topic: "greetings"
+      properties:
+        bootstrap.servers: "192.168.99.106:9092"
+        application.id: "greetings-streams"
+        acks: "all"
+        cache.max.bytes.buffering: 0
+        commit.interval.ms: 0
+        retries: 100000
+        
   publisher:
     properties:
       greetings-topic: "greetings"

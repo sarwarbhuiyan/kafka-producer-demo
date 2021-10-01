@@ -2,6 +2,8 @@ package com.example.sarwarbhuiyan.kafkaproducerdemo.controllers;
 
 import com.example.sarwarbhuiyan.kafkaproducerdemo.models.Greeting;
 import com.example.sarwarbhuiyan.kafkaproducerdemo.services.Publisher;
+import com.example.sarwarbhuiyan.kafkaproducerdemo.streams.GreetingsStreams;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class PublisherResource {
 
     @Autowired
     Publisher publisher;
+    
+    @Autowired
+    GreetingsStreams greetingsStream;
 
     @GetMapping("/")
     public String index() {
@@ -50,5 +55,11 @@ public class PublisherResource {
             logger.error("Error occurred sending greeting", e);
             throw new TimeoutException();
         }
+    }
+    
+    
+    @GetMapping("/counts")
+    public Map<String, String> getCounts() {
+    	return greetingsStream.getLatestCounts();
     }
 }
