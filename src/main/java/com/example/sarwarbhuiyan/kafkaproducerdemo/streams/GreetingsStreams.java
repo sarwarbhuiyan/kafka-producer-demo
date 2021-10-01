@@ -106,7 +106,7 @@ public class GreetingsStreams {
 	public void start() {
 		logger.info("Starting Greetings Streams App");
 		streams = new KafkaStreams(buildTopology(), properties);
-		streams.cleanUp();
+//		streams.cleanUp(); use this only in dev as this will clean up all state stores
 		
 		// This ensures any uncaught exceptions would allow the stream thread to be recreated. 
 		streams.setUncaughtExceptionHandler(ex -> StreamsUncaughtExceptionHandler.StreamThreadExceptionResponse.REPLACE_THREAD);
